@@ -1,0 +1,38 @@
+//
+//  ViewController.swift
+//  DemoSaveUIPrefs
+//
+//  Created by Peter Sigurdson on 2020-02-11.
+//  Copyright © 2020 theprof. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    @IBOutlet weak var IBOnameTXTField: UITextField!
+    
+    @IBAction func IBOButton1(_ sender: Any) {
+        
+        IBOLabel.text = IBOnameTXTField.text
+        
+        UserDefaults.standard.set(IBOnameTXTField.text, forKey: "userName")
+        IBOnameTXTField.text = "";
+    }
+    
+    @IBOutlet weak var IBOLabel: UILabel!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let x = UserDefaults.standard.object(forKey: "userName") as? String
+        {
+            IBOLabel.text = x;
+        }
+        }
+    }
+
+
